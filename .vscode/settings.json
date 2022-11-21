@@ -1,0 +1,122 @@
+{
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 5000,
+  "latex-workshop.latex.autoClean.run": "onFailed",
+  "latex-workshop.latex.autoBuild.run": "onFileChange",
+  "latex-workshop.synctex.afterBuild.enabled": true,
+  "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.intellisense.package.enabled": true,
+  "editor.wordSeparators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?　、。「」【】『』（）！？てにをはがのともへでや",
+  "latex-workshop.linting.chktex.enabled": false,
+  "latex-workshop.latex.tools": [
+    {
+      "name": "ptex2pdf",
+      "command": "ptex2pdf",
+      "args": ["-l", "-ot", "-kanji=utf8 -synctex=1", "%DOCFILE%.tex"],
+      "env": {
+        "PATH": "/Library/TeX/texbin"
+      }
+    },
+    {
+      "name": "ptex2pdf (uplatex)",
+      "command": "ptex2pdf",
+      "args": ["-l", "-u", "-ot", "-kanji=utf8 -synctex=1", "%DOCFILE%.tex"]
+    },
+    {
+      "name": "pbibtex",
+      "command": "pbibtex",
+      "args": ["-kanji=utf8", "%DOCFILE%.tex"]
+    },
+    {
+      "name": "pdflatex",
+      "command": "pdflatex",
+      "args": ["-synctex=1", "-interaction=nonstopmode", "-file-line-error", "%DOCFILE%.tex"]
+    },
+    {
+      "name": "latexmk",
+      "command": "latexmk",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-halt-on-error",
+        "-pdfdvi",
+        "-outdir=%OUTDIR%",
+        "%DOC%"
+      ],
+      "env": {}
+    }
+  ],
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "ptex2pdf*2",
+      "tools": ["ptex2pdf", "ptex2pdf"]
+    },
+    {
+      "name": "ptex2pdf -> pbibtex -> ptex2pdf*2",
+      "tools": ["ptex2pdf", "pbibtex", "ptex2pdf", "ptex2pdf"]
+    },
+    {
+      "name": "ptex2pdf (uplatex) *2",
+      "tools": ["ptex2pdf (uplatex)", "ptex2pdf (uplatex)"]
+    },
+    {
+      "name": "ptex2pdf (uplatex) -> pbibtex -> ptex2pdf (uplatex) *2",
+      "tools": ["ptex2pdf (uplatex)", "pbibtex", "ptex2pdf (uplatex)", "ptex2pdf (uplatex)"]
+    },
+    {
+      "name": "pdflatex*2",
+      "tools": ["pdflatex", "pdflatex"]
+    },
+    {
+      "name": "pdflatex -> bibtex -> pdflatex*2",
+      "tools": ["pdflatex", "bibtex", "pdflatex", "pdflatex"]
+    },
+    {
+      "name": "latexmk",
+      "tools": ["latexmk"]
+    }
+  ],
+  "latex-workshop.latex.magic.args": [
+    "-f",
+    "-gg",
+    "-pv",
+    "-synctex=1",
+    "-interaction=nonstopmode",
+    "-file-line-error",
+    "%DOCFILE%.tex"
+  ],
+  "latex-workshop.latex.clean.fileTypes": [
+    "*.aux",
+    "*.bbl",
+    "*.blg",
+    "*.idx",
+    "*.ind",
+    "*.lof",
+    "*.lot",
+    "*.out",
+    "*.toc",
+    "*.acn",
+    "*.acr",
+    "*.alg",
+    "*.glg",
+    "*.glo",
+    "*.gls",
+    "*.ist",
+    "*.fls",
+    "*.log",
+    "*.fdb_latexmk",
+    "*.synctex.gz",
+    // for Beamer files
+    "_minted*",
+    "*.nav",
+    "*.snm",
+    "*.vrb",
+    "*.run.xml",
+    "*.dvi",
+    "*.bcf"
+  ],
+  "editor.renderControlCharacters": true
+  // "python.pythonPath": "/Users/onokouichi/venv2/bin/python",
+  // "DockerRun.DisableAutoGenerateConfig": true
+}
